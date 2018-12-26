@@ -3,6 +3,10 @@
 ## Project Description
 * This application is used to demonstrate the MERN STACK(Mongo,Express,React,Node)
 * The application consists of 3 kinds of users.
+
+          1. Members
+          2. Leaders
+          3. Admin
 * A web application where new users(members) join in answer questions and earn reward.
 * Questions are created by leaders.
 * Admin has the authority to choose a new leader from the members.
