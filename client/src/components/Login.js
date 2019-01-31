@@ -93,9 +93,7 @@ class Login extends React.Component{
           <div className="card ">
             <div className="card-content ">
               <span className="card-title center"><strong>Login</strong></span>
-              <p className="center">Welcom please login to continue!</p>
-              
-              
+              <p className="center">Welcome please visit <a href="https://github.com/ritwik1233/Questionaire" target="_blank">Github  link</a> to get different user credentials</p>
               <hr/>
 
 
