@@ -15,7 +15,7 @@ app.use(session({
     name: 'server-session-cookie-id',
     maxAge  : new Date(Date.now() + 3600000), 
     expires : new Date(Date.now() + 3600000),
-    secret: keys.cookieKey,
+    secret: keys.cookieKey.toString(),
     saveUninitialized: true,
     resave: true,
  }));
