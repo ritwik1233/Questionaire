@@ -1,4 +1,5 @@
 const express=require("express");
+const app =express();
 const mongoose=require('mongoose');
 const bodyParser=require('body-parser');
 const keys=require('./keys/keys');
@@ -7,13 +8,15 @@ const session=require('express-session');
 mongoose.connect(keys.MongoURI,{ useNewUrlParser: true });
 require('./models/userModel');
 require('./models/questionModel');
-const app =express();
 
+const MongoStore = require('connect-mongo')(session);
 app.use(bodyParser.json())
 app.use(session({
-    name: 'server-session-cookie-id',
-    secret: keys.cookieKey.toString(),
-  }));
+    secret: 'my-secret',
+    resave: false,
+    saveUninitialized: true,
+    store: new MongoStore({ mongooseConnection: db })
+}));
 if (process.env.NODE_ENV=='production')
     {
         app.use(express.static('client/build'));
