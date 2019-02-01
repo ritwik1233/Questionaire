@@ -10,6 +10,7 @@ require('./models/questionModel');
 const app =express();
 
 app.use(bodyParser.json())
+app.use(express.cookieParser(keys.cookieKey));
 app.use(session({
     name: 'server-session-cookie-id',
     maxAge  : new Date(Date.now() + 3600000), 
