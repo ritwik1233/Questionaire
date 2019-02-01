@@ -2,7 +2,6 @@ const mongoose=require('mongoose');
 const users=mongoose.model('users');
 module.exports=(app)=>{
     app.post('/api/login',(req,res)=>{
-        const data=req.body;
         if(req.session.userID!==undefined)
         {
             req.session.destroy(err=>{

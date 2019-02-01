@@ -12,12 +12,8 @@ const app =express();
 app.use(bodyParser.json())
 app.use(session({
     name: 'server-session-cookie-id',
-    maxAge  : new Date(Date.now() + 3600000), 
-    expires : new Date(Date.now() + 3600000),
     secret: keys.cookieKey.toString(),
-    saveUninitialized: true,
-    resave: true,
- }));
+  }));
 if (process.env.NODE_ENV=='production')
     {
         app.use(express.static('client/build'));
