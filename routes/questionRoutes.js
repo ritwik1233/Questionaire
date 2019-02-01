@@ -10,7 +10,7 @@ module.exports=(app)=>{
             return res.send(userData);
         })
         .catch(err=>{
-            return res.send(err)
+            return res.send()
         })
     
     })
@@ -21,7 +21,7 @@ module.exports=(app)=>{
             res.send(result);
         })
         .catch(err=>{
-            return res.send(err);
+            return res.send();
         })
     })
     app.get('/api/getQuestions',(req,res)=>
@@ -29,7 +29,7 @@ module.exports=(app)=>{
         questions.find().then(result=>{
             return res.send(result)
         }).catch(err=>{
-            return res.send(err)
+            return res.send()
         })
     })
     app.post('/api/EditProfile',(req,res)=>
@@ -43,7 +43,7 @@ module.exports=(app)=>{
             return res.send(result);
         })
         .catch(err=>{
-            return res.send(err)
+            return res.send()
         })
 
     })
@@ -67,7 +67,7 @@ module.exports=(app)=>{
                     
                 })
         }).catch(err=>{
-            return res.send(err)
+            return res.send()
         })
     })
     app.post('/api/updateAnswer',(req,res)=>{
@@ -91,7 +91,7 @@ module.exports=(app)=>{
                 })
             })
             .catch(err=>{
-                return res.send(err)
+                return res.send()
             })
         }
        else 
@@ -99,7 +99,7 @@ module.exports=(app)=>{
             questions.findByIdAndUpdate(req.body.id,data).then(result=>{
                 return res.send(result)
              }).catch(err=>{
-                return res.send(err)
+                return res.send()
             })
        }
    })
@@ -108,7 +108,7 @@ module.exports=(app)=>{
         questions.find({answeredBy:''}).then(result=>{
             return res.send(result)
         }).catch(err=>{
-            return res.send(err)
+            return res.send()
         })
     })
     
@@ -128,10 +128,10 @@ module.exports=(app)=>{
                         incorrect:incorrectData.length.toString(),
                        }
                     return res.send(result)
-                })
-            })   
-            })
-            })
+                    }).catch(err=>{res.send()})
+            }).catch(err=>{res.send()})   
+        }).catch(err=>{res.send()})
+        }).catch(err=>{res.send()})
 
     })
     app.get('/api/getAnsweredQuestions',(req,res)=>
@@ -142,7 +142,7 @@ module.exports=(app)=>{
             }).then(result=>{
                    return res.send(result)
                 }).catch(err=>{
-                return res.send(err)
+                return res.send()
             })
     })
     app.get('/api/getAllQuestions',(req,res)=>
@@ -154,7 +154,7 @@ module.exports=(app)=>{
                 }).then(result=>{
                        return res.send(result)
                     }).catch(err=>{
-                    return res.send(err)
+                    return res.send()
                 })
     })
     app.get('/api/getAnalytics',(req,res)=>{
@@ -173,11 +173,10 @@ module.exports=(app)=>{
                         notAttempted:(questionData.length-(correctData.length+incorrectData.length)).toString()
                     }
                     return res.send(result)
-                })
-            })   
-            })
-            })
-
+                }).catch(err=>{res.send()})
+            }).catch(err=>{res.send()})   
+            }).catch(err=>{res.send()})
+            }).catch(err=>{res.send()})
     })
     app.post('/api/addQuestions',(req,res)=>{
         const Questions=new questions({
@@ -187,7 +186,7 @@ module.exports=(app)=>{
         .then(data=>{
                 res.send(data)
             }).catch(err=>{
-                res.send(err)
+                res.send()
             })   
     })
 };

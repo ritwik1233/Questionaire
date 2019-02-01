@@ -8,7 +8,7 @@ module.exports=(app)=>{
             req.session.destroy(err=>{
                 if(err)
                 {
-                    res.send(err);
+                    res.send();
                 }
                 else
                 {
@@ -17,7 +17,7 @@ module.exports=(app)=>{
                         req.session.userID=data.id;
                         res.send(data)
                     }).catch(err=>{
-                    res.send(err);
+                    res.send();
                 })
                 }
             });
@@ -29,7 +29,7 @@ module.exports=(app)=>{
                         req.session.userID=data.id;
                         res.send(data)
                     }).catch(err=>{
-                    res.send(err);
+                    res.send();
                 })
         }
        
@@ -53,7 +53,7 @@ module.exports=(app)=>{
                 res.send([])
             } 
         }).catch(err=>{
-            res.send(err);
+            res.send();
         })
     })
     app.get('/api/current_user',(req,res)=>{
@@ -63,21 +63,21 @@ module.exports=(app)=>{
         users.findOne(id,{password:0}).then(data=>{
                 res.send(data);
         }).catch(err=>{
-                res.send(err);
+                res.send();
         })
     });
     app.get('/api/get_all_user',(req,res)=>{
         users.find({},{password:0}).then(data=>{
                 res.send(data);
         }).catch(err=>{
-                res.send(err);
+                res.send();
         })
     });
     app.get('/api/logout',(req,res)=>{
         req.session.destroy(err=>{
             if(err)
             {
-                res.send(err);
+                res.send();
             }
             else
             {
