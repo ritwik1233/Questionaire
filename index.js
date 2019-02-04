@@ -17,6 +17,9 @@ app.use(session({
     saveUninitialized: true,
     store: new MongoStore({ mongooseConnection: db })
 }));
+require('./routes/authRoutes')(app);
+require('./routes/questionRoutes')(app);
+
 if (process.env.NODE_ENV=='production')
     {
         app.use(express.static('client/build'));
@@ -25,8 +28,6 @@ if (process.env.NODE_ENV=='production')
             res.sendFile(path.resolve(__dirname,'client','build','index.html'));
         });
     }
-require('./routes/authRoutes')(app);
-require('./routes/questionRoutes')(app);
 
 app.listen(PORT,(err)=>{
     if(err)
