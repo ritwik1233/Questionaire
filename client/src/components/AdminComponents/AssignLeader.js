@@ -23,7 +23,6 @@ class AssignLeader extends React.Component
     {
         axios.post('/api/assignLeader',{id})
         .then(data=>{
-            console.log(data)
             this.setState({redirect:true})
         })
         .catch(err=>{
