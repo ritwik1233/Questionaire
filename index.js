@@ -15,7 +15,6 @@ app.use(session({
     secret: 'my-secret',
     resave: false,
     saveUninitialized: true,
-    store: new MongoStore({ mongooseConnection: db })
 }));
 require('./routes/authRoutes')(app);
 require('./routes/questionRoutes')(app);
